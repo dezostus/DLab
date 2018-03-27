@@ -63,7 +63,7 @@ public class SelfServiceApplicationConfiguration extends ServiceConfiguration {
 	private int maxSparkInstanceCount;
 
 	@JsonProperty
-	private boolean azureOuauth2AuthenticationEnabled;
+	private boolean azureUseLdap;
 
 	@JsonProperty
 	private boolean rolePolicyEnabled = false;
@@ -104,8 +104,8 @@ public class SelfServiceApplicationConfiguration extends ServiceConfiguration {
 		return gcpOuauth2AuthenticationEnabled;
 	}
 
-	public boolean isAzureOuauth2AuthenticationEnabled() {
-		return azureOuauth2AuthenticationEnabled;
+	public boolean isAzureUseLdap() {
+		return azureUseLdap;
 	}
 
 	/**

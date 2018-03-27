@@ -16,9 +16,9 @@
 
 package com.epam.dlab.backendapi.resources.callback.base;
 
-import com.epam.dlab.UserInstanceStatus;
 import com.epam.dlab.backendapi.dao.KeyDAO;
 import com.epam.dlab.backendapi.service.ExploratoryService;
+import com.epam.dlab.dto.UserInstanceStatus;
 import com.epam.dlab.exceptions.DlabException;
 import com.google.inject.Inject;
 import lombok.extern.slf4j.Slf4j;

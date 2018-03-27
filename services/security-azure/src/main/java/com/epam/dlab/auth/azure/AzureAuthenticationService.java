@@ -18,9 +18,9 @@ package com.epam.dlab.auth.azure;
 
 import com.epam.dlab.auth.UserInfo;
 import com.epam.dlab.auth.UserInfoDAO;
+import com.epam.dlab.auth.dto.UserCredentialDTO;
 import com.epam.dlab.auth.rest.AbstractAuthenticationService;
-import com.epam.dlab.config.azure.AzureLoginConfiguration;
-import com.epam.dlab.dto.UserCredentialDTO;
+import com.epam.dlab.auth.azure.conf.AzureLoginConfiguration;
 import com.epam.dlab.dto.azure.auth.AuthorizationCodeFlowResponse;
 import com.epam.dlab.exceptions.DlabException;
 import com.epam.dlab.rest.contracts.SecurityAPI;

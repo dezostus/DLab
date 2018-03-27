@@ -1,12 +1,12 @@
 package com.epam.dlab.backendapi.service.impl;
 
-import com.epam.dlab.UserInstanceStatus;
 import com.epam.dlab.auth.SystemUserInfoServiceImpl;
 import com.epam.dlab.auth.UserInfo;
 import com.epam.dlab.backendapi.dao.ExploratoryDAO;
 import com.epam.dlab.backendapi.dao.SchedulerJobDAO;
 import com.epam.dlab.dto.SchedulerJobDTO;
 import com.epam.dlab.dto.UserInstanceDTO;
+import com.epam.dlab.dto.UserInstanceStatus;
 import com.epam.dlab.exceptions.ResourceInappropriateStateException;
 import com.epam.dlab.exceptions.ResourceNotFoundException;
 import com.epam.dlab.model.scheduler.SchedulerJobData;

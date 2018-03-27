@@ -18,8 +18,8 @@
 
 package com.epam.dlab.backendapi.dao;
 
-import com.epam.dlab.UserInstanceStatus;
 import com.epam.dlab.dto.SchedulerJobDTO;
+import com.epam.dlab.dto.UserInstanceStatus;
 import com.epam.dlab.model.scheduler.SchedulerJobData;
 import com.google.inject.Singleton;
 import com.mongodb.client.FindIterable;

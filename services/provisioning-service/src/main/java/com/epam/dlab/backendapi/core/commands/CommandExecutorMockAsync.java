@@ -18,7 +18,7 @@
 
 package com.epam.dlab.backendapi.core.commands;
 
-import com.epam.dlab.UserInstanceStatus;
+import com.epam.dlab.dto.UserInstanceStatus;
 import com.epam.dlab.cloud.CloudProvider;
 import com.epam.dlab.dto.exploratory.LibInstallDTO;
 import com.epam.dlab.dto.exploratory.LibStatus;

@@ -50,11 +50,11 @@ import org.quartz.impl.StdSchedulerFactory;
 @Slf4j
 public class AzureSelfServiceModule extends CloudModule {
 
-	private boolean oauth2Enabled;
+	private boolean useLdap;
 	private long maxSessionDurabilityMilliseconds;
 
-	public AzureSelfServiceModule(boolean oauth2Enabled, long maxSessionDurabilityMilliseconds) {
-		this.oauth2Enabled = oauth2Enabled;
+	public AzureSelfServiceModule(boolean useLdap, long maxSessionDurabilityMilliseconds) {
+		this.useLdap = useLdap;
 		this.maxSessionDurabilityMilliseconds = maxSessionDurabilityMilliseconds;
 	}
 
@@ -75,7 +75,7 @@ public class AzureSelfServiceModule extends CloudModule {
 		environment.jersey().register(injector.getInstance(ComputationalResourceAzure.class));
 		environment.jersey().register(injector.getInstance(BillingResourceAzure.class));
 
-		if (oauth2Enabled) {
+		if (!useLdap) {
 			environment.jersey().register(injector.getInstance(AzureOauthResource.class));
 			injector.getInstance(SecurityFactory.class).configure(injector, environment,
 					SelfServiceSecurityAuthenticator.class,

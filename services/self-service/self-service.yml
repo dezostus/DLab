@@ -61,7 +61,7 @@ billingConfFile: ${DLAB_CONF_DIR}/billing.yml
 </#if>
 
 <#if CLOUD_TYPE == "azure">
-azureOuauth2AuthenticationEnabled: false
+azureUseLdap: <LOGIN_USE_LDAP>
 maxSessionDurabilityMilliseconds: 288000000
 </#if>
 

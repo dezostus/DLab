@@ -53,6 +53,15 @@
             <artifactId>dropwizard-auth</artifactId>
             <version>${io.dropwizard.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.epam.dlab</groupId>
+            <artifactId>dlab-auth-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.epam.dlab</groupId>
+            <artifactId>dlab-model</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
 
     </dependencies>
 

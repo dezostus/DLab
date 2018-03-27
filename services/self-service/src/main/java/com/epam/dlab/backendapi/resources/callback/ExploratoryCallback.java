@@ -16,10 +16,10 @@
 
 package com.epam.dlab.backendapi.resources.callback;
 
-import com.epam.dlab.UserInstanceStatus;
 import com.epam.dlab.backendapi.dao.ComputationalDAO;
 import com.epam.dlab.backendapi.dao.ExploratoryDAO;
 import com.epam.dlab.backendapi.domain.RequestId;
+import com.epam.dlab.dto.UserInstanceStatus;
 import com.epam.dlab.dto.exploratory.ExploratoryStatusDTO;
 import com.epam.dlab.exceptions.DlabException;
 import com.epam.dlab.rest.contracts.ApiCallbacks;
@@ -33,7 +33,10 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import static com.epam.dlab.UserInstanceStatus.*;
+import static com.epam.dlab.dto.UserInstanceStatus.STOPPING;
+import static com.epam.dlab.dto.UserInstanceStatus.TERMINATED;
+import static com.epam.dlab.dto.UserInstanceStatus.TERMINATING;
+
 
 @Path("/infrastructure_provision/exploratory_environment")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -70,7 +73,7 @@ public class ExploratoryCallback {
 			log.error("Could not get current status for exploratory environment {} for user {}",
 					dto.getExploratoryName(), dto.getUser(), e);
 			throw new DlabException("Could not get current status for exploratory environment " + dto
-                    .getExploratoryName() +
+					.getExploratoryName() +
 					" for user " + dto.getUser() + ": " + e.getLocalizedMessage(), e);
 		}
 		log.debug("Current status for exploratory environment {} for user {} is {}",
@@ -80,7 +83,7 @@ public class ExploratoryCallback {
 			exploratoryDAO.updateExploratoryFields(dto);
 			if (currentStatus == TERMINATING) {
 				updateComputationalStatuses(dto.getUser(), dto.getExploratoryName(), UserInstanceStatus.of(dto
-                        .getStatus()));
+						.getStatus()));
 			} else if (currentStatus == STOPPING) {
 				updateComputationalStatuses(dto.getUser(), dto.getExploratoryName(), UserInstanceStatus.of(dto
 						.getStatus()), TERMINATED);
@@ -104,7 +107,7 @@ public class ExploratoryCallback {
 	 */
 	private void updateComputationalStatuses(String user, String exploratoryName, UserInstanceStatus status) {
 		log.debug("updating status for all computational resources of {} for user {}: {}", exploratoryName, user,
-                status);
+				status);
 		computationalDAO.updateComputationalStatusesForExploratory(new ExploratoryStatusDTO()
 				.withUser(user)
 				.withExploratoryName(exploratoryName)

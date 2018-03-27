@@ -37,7 +37,7 @@
 
         <dependency>
             <groupId>com.epam.dlab</groupId>
-            <artifactId>common</artifactId>
+            <artifactId>dlab-model</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
 

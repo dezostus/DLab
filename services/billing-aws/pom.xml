@@ -33,17 +33,12 @@
         <org.apache.jexl3.version>3.0</org.apache.jexl3.version>
         <com.amazonaws.version>1.11.48</com.amazonaws.version>
         <org.freemarker.version>2.3.22</org.freemarker.version>
-        <ch.qos.logback.version>1.2.3</ch.qos.logback.version>
-        <com.google.guava.version>24.0-jre</com.google.guava.version>
-        <org.hibernate.validator.version>5.4.1.Final</org.hibernate.validator.version>
-        <org.glassfish.el.version>3.0.0</org.glassfish.el.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>com.epam.dlab</groupId>
             <artifactId>common</artifactId>
-            <version>${project.parent.version}</version>
         </dependency>
 
         <dependency>
@@ -66,26 +61,6 @@
             <artifactId>freemarker</artifactId>
             <version>${org.freemarker.version}</version>
         </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>${ch.qos.logback.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${com.google.guava.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>${org.hibernate.validator.version}</version>
-        </dependency>
-		<dependency>
-   			<groupId>org.glassfish</groupId>
-   			<artifactId>javax.el</artifactId>
-   			<version>${org.glassfish.el.version}</version>
-		</dependency>
     </dependencies>
     <build>
         <plugins>

@@ -18,7 +18,6 @@
 
 package com.epam.dlab.backendapi.dao;
 
-import com.epam.dlab.UserInstanceStatus;
 import com.epam.dlab.auth.UserInfo;
 import com.epam.dlab.backendapi.SelfServiceApplication;
 import com.epam.dlab.backendapi.SelfServiceApplicationConfiguration;
@@ -28,6 +27,7 @@ import com.epam.dlab.backendapi.resources.dto.HealthStatusEnum;
 import com.epam.dlab.backendapi.resources.dto.HealthStatusPageDTO;
 import com.epam.dlab.backendapi.resources.dto.HealthStatusResource;
 import com.epam.dlab.cloud.CloudProvider;
+import com.epam.dlab.dto.UserInstanceStatus;
 import com.epam.dlab.dto.base.DataEngineType;
 import com.epam.dlab.dto.status.EnvResource;
 import com.epam.dlab.dto.status.EnvResourceList;
@@ -45,10 +45,10 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-import static com.epam.dlab.UserInstanceStatus.TERMINATED;
 import static com.epam.dlab.backendapi.dao.ComputationalDAO.COMPUTATIONAL_NAME;
 import static com.epam.dlab.backendapi.dao.ExploratoryDAO.*;
 import static com.epam.dlab.backendapi.dao.KeyDAO.EDGE_STATUS;
+import static com.epam.dlab.dto.UserInstanceStatus.TERMINATED;
 import static com.mongodb.client.model.Filters.*;
 import static com.mongodb.client.model.Projections.elemMatch;
 import static com.mongodb.client.model.Projections.*;
@@ -244,19 +244,19 @@ public class EnvStatusDAO extends BaseDAO {
 
 		switch (oldStatus) {
 			case CREATING_IMAGE:
-				return !status.in(UserInstanceStatus.TERMINATED, UserInstanceStatus.TERMINATING) ? status : oldStatus;
+				return !status.in(TERMINATED, UserInstanceStatus.TERMINATING) ? status : oldStatus;
 			case CREATING:
-				return (status.in(UserInstanceStatus.TERMINATED, UserInstanceStatus.STOPPED) ? status : oldStatus);
+				return (status.in(TERMINATED, UserInstanceStatus.STOPPED) ? status : oldStatus);
 			case RUNNING:
 			case STARTING:
 			case STOPPING:
-				return (status.in(UserInstanceStatus.TERMINATING, UserInstanceStatus.TERMINATED,
+				return (status.in(UserInstanceStatus.TERMINATING, TERMINATED,
 						UserInstanceStatus.STOPPING, UserInstanceStatus.STOPPED) ? status : oldStatus);
 			case STOPPED:
-				return (status.in(UserInstanceStatus.TERMINATING, UserInstanceStatus.TERMINATED,
+				return (status.in(UserInstanceStatus.TERMINATING, TERMINATED,
 						UserInstanceStatus.RUNNING) ? status : oldStatus);
 			case TERMINATING:
-				return (status.in(UserInstanceStatus.TERMINATED) ? status : oldStatus);
+				return (status.in(TERMINATED) ? status : oldStatus);
 			case FAILED:
 			case TERMINATED:
 			default:
@@ -333,7 +333,7 @@ public class EnvStatusDAO extends BaseDAO {
 		/* AWS statuses: bootstrapping, running, starting, terminated, terminated_with_errors, terminating, waiting */
 		UserInstanceStatus status;
 		if ("terminated".equalsIgnoreCase(newStatus) || "terminated_with_errors".equalsIgnoreCase(newStatus)) {
-			status = UserInstanceStatus.TERMINATED;
+			status = TERMINATED;
 		} else if ("terminating".equalsIgnoreCase(newStatus)) {
 			status = UserInstanceStatus.TERMINATING;
 		} else {
@@ -344,9 +344,9 @@ public class EnvStatusDAO extends BaseDAO {
 			case CREATING:
 			case CONFIGURING:
 			case RUNNING:
-				return (status.in(UserInstanceStatus.TERMINATED, UserInstanceStatus.TERMINATING) ? status : oldStatus);
+				return (status.in(TERMINATED, UserInstanceStatus.TERMINATING) ? status : oldStatus);
 			case TERMINATING:
-				return (status.in(UserInstanceStatus.TERMINATED) ? status : oldStatus);
+				return (status.in(TERMINATED) ? status : oldStatus);
 			case FAILED:
 			case TERMINATED:
 			default:
@@ -378,7 +378,7 @@ public class EnvStatusDAO extends BaseDAO {
 			LOGGER.debug("Computational status for user {} with exploratory {} and computational {} will be updated " +
 							"from {} to {}",
 					user, exploratoryName, computationalName, oldStatus, status);
-			if (configuration.getCloudProvider() == CloudProvider.AWS && status == UserInstanceStatus.TERMINATED &&
+			if (configuration.getCloudProvider() == CloudProvider.AWS && status == TERMINATED &&
 					terminateComputationalSpot(user, exploratoryName, computationalName)) {
 				return;
 			}

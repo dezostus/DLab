@@ -25,7 +25,6 @@ import com.epam.dlab.rest.contracts.EdgeAPI;
 import com.google.inject.Inject;
 import io.dropwizard.auth.Auth;
 import lombok.extern.slf4j.Slf4j;
-import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataParam;
 
 import javax.ws.rs.*;
@@ -82,10 +81,7 @@ public class KeyUploaderResource implements EdgeAPI {
 	@POST
 	@Consumes(MediaType.MULTIPART_FORM_DATA)
 	public Response uploadKey(@Auth UserInfo userInfo,
-							  @FormDataParam("file") InputStream uploadedInputStream,
-							  @FormDataParam("file") FormDataContentDisposition fileDetail) {
-
-		final String fileContent = getFileContent(uploadedInputStream, userInfo.getName());
+							  @FormDataParam("file") String fileContent) {
 		validate(fileContent);
 		keyService.uploadKey(userInfo, fileContent);
 		return Response.ok().build();
@@ -111,15 +107,6 @@ public class KeyUploaderResource implements EdgeAPI {
 		final Response.ResponseBuilder builder = Response.ok(keyService.generateKey(userInfo));
 		builder.header(HttpHeaders.CONTENT_DISPOSITION, String.format(FILE_ATTACHMENT_FORMAT, userInfo.getName()));
 		return builder.build();
-	}
-
-	private String getFileContent(InputStream uploadedInputStream, String user) {
-		try (BufferedReader buffer = new BufferedReader(new InputStreamReader(uploadedInputStream))) {
-			return buffer.lines().collect(Collectors.joining("\n"));
-		} catch (IOException e) {
-			log.error("Could not upload the key for user {}", user, e);
-			throw new DlabException("Could not upload the key for user " + user + ": " + e.getLocalizedMessage(), e);
-		}
 	}
 
 	private void validate(String publicKey) {
