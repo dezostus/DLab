@@ -29,9 +29,10 @@
     <artifactId>billing-azure</artifactId>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/com.microsoft.azure/azure-client-authentication -->
         <dependency>
             <groupId>com.microsoft.azure</groupId>
-            <artifactId>azure</artifactId>
+            <artifactId>azure-client-authentication</artifactId>
             <version>1.2.1</version>
         </dependency>
 
@@ -98,5 +99,5 @@
             </plugin>
         </plugins>
     </build>
-    
+
 </project>

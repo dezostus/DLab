@@ -24,7 +24,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.amazonaws.services.kinesis.model.InvalidArgumentException;
+
 import com.epam.dlab.exception.InitializationException;
 import com.google.common.collect.Lists;
 
@@ -40,7 +40,8 @@ public class ColumnMetaTest {
 		
 		try {
 			ColumnMeta.getColumnIndexByName("NotFound", columns);
-			throw new InvalidArgumentException("Test failed");
+
+			throw new RuntimeException("Test failed");
 		} catch (InitializationException e) {
 			// OK
 		}
