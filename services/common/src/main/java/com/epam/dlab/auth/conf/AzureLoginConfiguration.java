@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.epam.dlab.auth.azure.conf;
+package com.epam.dlab.auth.conf;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;

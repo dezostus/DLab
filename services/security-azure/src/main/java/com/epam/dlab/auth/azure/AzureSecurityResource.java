@@ -43,8 +43,8 @@ public class AzureSecurityResource {
     private final Cache<String, Object> cache = CacheBuilder.newBuilder().expireAfterWrite(4, TimeUnit.HOURS).maximumSize(10000).build();
 
     @Inject
-    @Named(ServiceConsts.SECURITY_SERVICE_NAME)
-    private RESTService securityService;
+    //@Named(ServiceConsts.SECURITY_SERVICE_NAME)
+    private AzureAuthenticationService securityService;
 
     @Inject
     private AzureLoginUrlBuilder azureLoginUrlBuilder;
@@ -69,7 +69,7 @@ public class AzureSecurityResource {
             log.debug("Successfully received auth code {}", authorizationCodeFlowResponse);
             if (cache.getIfPresent(authorizationCodeFlowResponse.getState()) != null) {
                 log.debug("Retrieving token from {}", authorizationCodeFlowResponse);
-                Response response = securityService.post(SecurityAPI.LOGIN_OAUTH, authorizationCodeFlowResponse, Response.class);
+                Response response = securityService.authenticateOAuth(authorizationCodeFlowResponse);
                 log.debug("Token retrieve response {}", response);
                 if (response.getStatus() == Response.Status.OK.getStatusCode()
                         || response.getStatus() == Response.Status.UNAUTHORIZED.getStatusCode()) {

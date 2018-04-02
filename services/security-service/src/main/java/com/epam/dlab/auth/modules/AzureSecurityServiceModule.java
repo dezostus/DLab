@@ -5,6 +5,7 @@ import com.epam.dlab.auth.UserInfoDAO;
 import com.epam.dlab.auth.UserVerificationService;
 import com.epam.dlab.auth.azure.AzureAuthenticationService;
 import com.epam.dlab.auth.azure.AzureLoginUrlBuilder;
+import com.epam.dlab.auth.azure.AzureSecurityResource;
 import com.epam.dlab.auth.azure.DlabExceptionMapper;
 import com.epam.dlab.auth.resources.SynchronousLdapAuthenticationService;
 import com.epam.dlab.cloud.CloudModule;
@@ -38,6 +39,7 @@ public class AzureSecurityServiceModule extends CloudModule {
 			environment.jersey().register(injector.getInstance(SynchronousLdapAuthenticationService.class));
 		} else {
 			environment.jersey().register(injector.getInstance(AzureAuthenticationService.class));
+			environment.jersey().register(injector.getInstance(AzureSecurityResource.class));
 		}
 	}
 

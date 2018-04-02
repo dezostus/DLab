@@ -171,6 +171,7 @@ azureLoginConfiguration:
     permissionScope: <PERMISSION_SCOPE>
     # Authentication file that used for validation user permissions(query Microsoft API)
     managementApiAuthFile: <MANAGEMENT_API_AUTH_FILE>
+    silent: true
 
 <#elseif CLOUD_TYPE == "gcp">
 

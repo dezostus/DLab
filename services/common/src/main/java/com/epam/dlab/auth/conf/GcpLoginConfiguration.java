@@ -1,4 +1,4 @@
-package com.epam.dlab.auth.gcp.conf;
+package com.epam.dlab.auth.conf;
 
 import lombok.Data;
 

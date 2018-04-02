@@ -17,7 +17,7 @@
 
 package com.epam.dlab.auth.azure;
 
-import com.epam.dlab.auth.azure.conf.AzureLoginConfiguration;
+import com.epam.dlab.auth.conf.AzureLoginConfiguration;
 import com.microsoft.aad.adal4j.AuthenticationContext;
 import com.microsoft.aad.adal4j.AuthenticationResult;
 
