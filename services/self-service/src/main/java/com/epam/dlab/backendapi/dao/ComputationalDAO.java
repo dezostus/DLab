@@ -33,6 +33,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static com.epam.dlab.backendapi.dao.ExploratoryDAO.*;
+import static com.epam.dlab.dto.UserInstanceStatus.FAILED;
 import static com.epam.dlab.dto.UserInstanceStatus.TERMINATED;
 import static com.mongodb.client.model.Filters.*;
 import static com.mongodb.client.model.Projections.elemMatch;
@@ -191,7 +192,7 @@ public class ComputationalDAO extends BaseDAO {
 			computationalImage) {
 		return and(exploratoryCondition(user, exploratoryName),
 				elemMatch(COMPUTATIONAL_RESOURCES, and(eq(IMAGE, computationalImage),
-						not(eq(STATUS, TERMINATED.toString())),
+						not(in(STATUS, TERMINATED.toString(), FAILED.toString())),
 						not(eq(STATUS, computationalStatus)))));
 	}
 
