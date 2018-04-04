@@ -33,7 +33,7 @@ public abstract class AbstractAuthenticationService<C extends Configuration> ext
 		super(config);
 	}
 
-	protected static String getRandomToken() {
+	public static String getRandomToken() {
 		return UUID.randomUUID().toString();
 	}
 

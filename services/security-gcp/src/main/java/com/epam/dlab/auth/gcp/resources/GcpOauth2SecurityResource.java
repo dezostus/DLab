@@ -11,7 +11,6 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
-import java.net.URI;
 
 import static java.util.Objects.nonNull;
 
@@ -24,7 +23,7 @@ public class GcpOauth2SecurityResource {
 	@GET
 	@Path(SecurityAPI.INIT_LOGIN_OAUTH_GCP)
 	public Response redirectedUrl() {
-		return Response.seeOther(URI.create(authenticationService.getRedirectedUrl())).build();
+		return Response.ok(authenticationService.getRedirectedUrl()).build();
 	}
 
 	@POST

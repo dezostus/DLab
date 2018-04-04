@@ -33,7 +33,7 @@ class AuthorizationCodeSupplier extends AuthorizationSupplier {
         this.response = response;
     }
 
-    Future<AuthenticationResult> get(AuthenticationContext context, String resource) {
+    public Future<AuthenticationResult> get(AuthenticationContext context, String resource) {
         return context
                 .acquireTokenByAuthorizationCode(response.getCode(), resource, azureLoginConfiguration.getClientId(),
                         URI.create(azureLoginConfiguration.getRedirectUrl()), null);

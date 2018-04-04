@@ -10,6 +10,7 @@ import com.google.inject.name.Named;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.net.URI;
 
 @Path("/user/gcp")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -24,7 +25,9 @@ public class GcpOauthResource {
 	@GET
 	@Path("/init")
 	public Response redirectedUrl() {
-		return securityService.get(SecurityAPI.INIT_LOGIN_OAUTH_GCP, Response.class);
+		return Response
+				.seeOther(URI.create(securityService.get(SecurityAPI.INIT_LOGIN_OAUTH_GCP, String.class)))
+				.build();
 	}
 
 	@GET

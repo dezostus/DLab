@@ -23,12 +23,12 @@ import com.microsoft.aad.adal4j.AuthenticationResult;
 
 import java.util.concurrent.Future;
 
-abstract class AuthorizationSupplier {
+public abstract class AuthorizationSupplier {
     final AzureLoginConfiguration azureLoginConfiguration;
 
     AuthorizationSupplier(AzureLoginConfiguration azureLoginConfiguration) {
         this.azureLoginConfiguration = azureLoginConfiguration;
     }
 
-    abstract Future<AuthenticationResult> get(AuthenticationContext context, String resource);
+    public abstract Future<AuthenticationResult> get(AuthenticationContext context, String resource);
 }

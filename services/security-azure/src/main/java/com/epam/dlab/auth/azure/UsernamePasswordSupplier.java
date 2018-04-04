@@ -32,7 +32,7 @@ class UsernamePasswordSupplier extends AuthorizationSupplier {
 		this.credentialDTO = credentialDTO;
 	}
 
-	Future<AuthenticationResult> get(AuthenticationContext context, String resource) {
+	public Future<AuthenticationResult> get(AuthenticationContext context, String resource) {
 		return context
 				.acquireToken(resource, azureLoginConfiguration.getClientId(), credentialDTO.getUsername(),
 						credentialDTO.getPassword(), null);

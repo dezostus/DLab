@@ -14,8 +14,10 @@
  * limitations under the License.
  */
 
-package com.epam.dlab.auth.azure;
+package com.epam.dlab.auth.azure.service;
 
+import com.epam.dlab.auth.azure.AuthorizationSupplier;
+import com.epam.dlab.auth.azure.AzureLocalAuthResponse;
 import com.microsoft.aad.adal4j.AuthenticationResult;
 
 import javax.ws.rs.core.Response;
@@ -29,7 +31,7 @@ public interface AzureAuthorizationCodeService {
      * @return response {@link Response} with proper status {@link Response.Status} that means result of
      * the user authentication.
      */
-    Response authenticateAndLogin(AuthorizationSupplier authorizationSupplier);
+    AzureLocalAuthResponse authenticateAndLogin(AuthorizationSupplier authorizationSupplier);
 
     /**
      * Verifies if user has permissions to configured scope in configuration file
