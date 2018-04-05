@@ -16,4 +16,7 @@ public interface ExploratoryService {
 	String create(UserInfo userInfo, Exploratory exploratory);
 
 	void updateExploratoryStatuses(String user, UserInstanceStatus status);
+
+	void updateUserInstancesReuploadKeyFlag(String user);
+
 }

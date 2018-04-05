@@ -42,8 +42,8 @@ import javax.ws.rs.core.Response;
 public class ProvisioningDevModule extends ModuleBase<ProvisioningServiceApplicationConfiguration> implements
 		SecurityAPI, DockerAPI {
 
-	private static final String OPERATION_IS_NOT_SUPPORTED = "Operation is not supported";
 	private static final String TOKEN = "token123";
+	private static final String OPERATION_IS_NOT_SUPPORTED = "Operation is not supported";
 
 	/**
 	 * Instantiates an application configuration of Provisioning Service for tests.
@@ -51,7 +51,7 @@ public class ProvisioningDevModule extends ModuleBase<ProvisioningServiceApplica
 	 * @param configuration application configuration of Provisioning Service.
 	 * @param environment   environment of Provisioning Service.
 	 */
-	public ProvisioningDevModule(ProvisioningServiceApplicationConfiguration configuration, Environment environment) {
+	ProvisioningDevModule(ProvisioningServiceApplicationConfiguration configuration, Environment environment) {
 		super(configuration, environment);
 	}
 
