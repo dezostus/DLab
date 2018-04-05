@@ -18,8 +18,6 @@
 
 package com.epam.dlab.utils;
 
-import org.apache.commons.lang3.StringUtils;
-
 public class UsernameUtils {
 
 	private static final String UNDERLINE = "_";
@@ -29,7 +27,7 @@ public class UsernameUtils {
 	}
 
 	public static String replaceWhitespaces(String username) {
-		return StringUtils.replaceAll(username, "\\s", UNDERLINE);
+		return username.replaceAll("\\s", UNDERLINE);
 	}
 
 	private UsernameUtils() {
