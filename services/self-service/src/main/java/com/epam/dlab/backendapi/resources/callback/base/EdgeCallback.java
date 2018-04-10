@@ -36,15 +36,9 @@ public class EdgeCallback {
 
 	protected void handleEdgeCallback(String user, String status) {
 		try {
-			if (UserInstanceStatus.of(status) == UserInstanceStatus.TERMINATED) {
-				log.debug("Removing user edge and set exploratory statuses to terminated");
-				keyDAO.deleteKey(user);
-				keyDAO.deleteEdge(user);
-				exploratoryService.updateExploratoryStatuses(user, UserInstanceStatus.TERMINATED);
-			} else {
-				log.debug("Updating the status of EDGE node for user {} to {}", user, status);
-				keyDAO.updateEdgeStatus(user, status);
-			}
+			log.debug("Updating the status of EDGE node for user {} to {}", user, status);
+			keyDAO.updateEdgeStatus(user, status);
+
 		} catch (DlabException e) {
 			log.error("Could not update status of EDGE node for user {} to {}", status, status, e);
 			throw new DlabException(String.format("Could not update status of EDGE node to %s: %s",

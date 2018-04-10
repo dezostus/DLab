@@ -99,13 +99,11 @@ public class SelfServiceApplicationConfiguration extends ServiceConfiguration {
 	public long getMaxSessionDurabilityMilliseconds() {
 		return maxSessionDurabilityMilliseconds;
 	}
+	@JsonProperty
+	private int privateKeySize = 2048;
 
 	public boolean isGcpOuauth2AuthenticationEnabled() {
 		return gcpOuauth2AuthenticationEnabled;
-	}
-
-	public boolean isAzureUseLdap() {
-		return azureUseLdap;
 	}
 
 	/**
@@ -193,5 +191,13 @@ public class SelfServiceApplicationConfiguration extends ServiceConfiguration {
 
 	public int getMaxUserNameLength() {
 		return maxUserNameLength;
+	}
+
+	public int getPrivateKeySize() {
+		return privateKeySize;
+	}
+
+	public boolean isAzureUseLdap() {
+		return azureUseLdap;
 	}
 }
