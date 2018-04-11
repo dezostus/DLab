@@ -16,16 +16,16 @@ limitations under the License.
 
 ****************************************************************************/
 
-package com.epam.dlab.core.parser;
+package com.epam.dlab.model.aws;
+
+import com.epam.dlab.exceptions.ParseException;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.common.base.MoreObjects;
+import com.google.common.base.MoreObjects.ToStringHelper;
 
 import java.util.LinkedHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import com.epam.dlab.exception.ParseException;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.google.common.base.MoreObjects;
-import com.google.common.base.MoreObjects.ToStringHelper;
 
 /** The line of billing report.
  */
@@ -70,7 +70,7 @@ public class ReportLine {
 	private String currencyCode;
 
 	@JsonProperty
-	private ResourceType resourceType;
+	private BillingResourceType resourceType;
 
 	@JsonProperty
 	private String resourceId;
@@ -147,7 +147,7 @@ public class ReportLine {
 		return resourceId;
 	}
 
-	public ResourceType getResourceType() {
+	public BillingResourceType getResourceType() {
 		return resourceType;
 	}
 
@@ -175,24 +175,24 @@ public class ReportLine {
 		
 		if ("Amazon Elastic MapReduce".equals(product) ||
 				   "Amazon Simple Queue Service".equals(product)) {
-			resourceType = ResourceType.CLUSTER;
+			resourceType = BillingResourceType.CLUSTER;
 			Matcher m = pClusterId.matcher(resourceTypeId);
 			resourceId = (m.find() ? m.group() : null);
 		} else {
 			if ("Amazon Elastic Compute Cloud".equals(product)) {
 				if (pInstancceId.matcher(resourceTypeId).find()) {
-					resourceType = ResourceType.COMPUTER;
+					resourceType = BillingResourceType.COMPUTER;
 				} else if(pVolumeId.matcher(resourceTypeId).find()) {
-					resourceType = ResourceType.STORAGE_EBS;
+					resourceType = BillingResourceType.STORAGE_EBS;
 				} else if (pIpAddress.matcher(resourceTypeId).find()) {
-					resourceType = ResourceType.IP_ADDRESS;
+					resourceType = BillingResourceType.IP_ADDRESS;
 				} else {
-					resourceType = ResourceType.COMPUTER;
+					resourceType = BillingResourceType.COMPUTER;
 				}
 			} else if ("Amazon Simple Storage Service".equals(product)) {
-				resourceType = ResourceType.STORAGE_BUCKET;
+				resourceType = BillingResourceType.STORAGE_BUCKET;
 			} else {
-				resourceType = ResourceType.OTHER;
+				resourceType = BillingResourceType.OTHER;
 			}
 			resourceId = resourceTypeId;
 		}

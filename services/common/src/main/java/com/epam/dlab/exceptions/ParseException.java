@@ -16,7 +16,7 @@ limitations under the License.
 
 ****************************************************************************/
 
-package com.epam.dlab.exception;
+package com.epam.dlab.exceptions;
 
 /** The exception thrown by the adapter when the convert errors acquired.
  */

@@ -61,6 +61,11 @@
             <artifactId>freemarker</artifactId>
             <version>${org.freemarker.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.epam.dlab</groupId>
+            <artifactId>dlab-model</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

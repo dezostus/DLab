@@ -8,40 +8,6 @@
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
-    <profiles>
-        <profile>
-            <id>aws</id>
-            <dependencies>
-                <dependency>
-                    <groupId>com.epam.dlab</groupId>
-                    <artifactId>billing-aws</artifactId>
-                    <version>${project.parent.version}</version>
-                </dependency>
-            </dependencies>
-        </profile>
-        <profile>
-            <id>azure</id>
-            <dependencies>
-                <dependency>
-                    <groupId>com.epam.dlab</groupId>
-                    <artifactId>billing-azure</artifactId>
-                    <version>${project.parent.version}</version>
-                </dependency>
-            </dependencies>
-        </profile>
-
-        <profile>
-            <id>gcp</id>
-            <dependencies>
-                <dependency>
-                    <groupId>com.epam.dlab</groupId>
-                    <artifactId>billing-gcp</artifactId>
-                    <version>${project.parent.version}</version>
-                </dependency>
-            </dependencies>
-        </profile>
-    </profiles>
-
     <artifactId>self-service</artifactId>
 
     <properties>
@@ -61,18 +27,6 @@
         <dependency>
             <groupId>com.google.inject</groupId>
             <artifactId>guice</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.epam.dlab</groupId>
-            <artifactId>billing-aws</artifactId>
-            <version>${project.parent.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.epam.dlab</groupId>
-            <artifactId>billing-azure</artifactId>
-            <version>${project.parent.version}</version>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.mongodb</groupId>

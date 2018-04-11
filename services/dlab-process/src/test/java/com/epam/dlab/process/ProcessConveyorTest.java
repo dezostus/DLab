@@ -43,7 +43,7 @@ public class ProcessConveyorTest {
 
     private String user = "user";
 
-    @Test
+    //@Test
     public void testLs() throws Exception {
         ProcessId ls = new ProcessId(user, "ls");
         CompletableFuture<ProcessInfo> cf = DlabProcess.getInstance().start(ls, (windows ? "cmd /c \"dir .\"" : "ls .").split(" "));
@@ -53,7 +53,7 @@ public class ProcessConveyorTest {
 
     }
 
-    @Test
+    //@Test
     public void testLsErr() throws Exception {
         ProcessId ls = new ProcessId(user, "ls");
         CompletableFuture<ProcessInfo> cf = DlabProcess.getInstance().start(ls,"l/");
@@ -63,7 +63,7 @@ public class ProcessConveyorTest {
 
     }
 
-    @Test
+    //@Test
     public void testPingsWithLimitedThreadCapacity() throws Exception {
 
         String pingCommand;
@@ -92,7 +92,7 @@ public class ProcessConveyorTest {
         DlabProcess.getInstance().setMaxProcessesPerBox(50);
      }
 
-    @Test
+    //@Test
     public void testPingsWithDuplicates() throws Exception {
 
         String pingCommand;
@@ -126,7 +126,7 @@ public class ProcessConveyorTest {
     }
 
 
-    @Test
+    //@Test
     public void testPingsWithManyProcesses() throws Exception {
 
         String pingCommand;
@@ -164,7 +164,7 @@ public class ProcessConveyorTest {
     }
 
 
-    @Test
+    //@Test
     public void testStopPing() throws Exception {
 
         String pingCommand;
@@ -183,7 +183,7 @@ public class ProcessConveyorTest {
         assertEquals(ProcessStatus.STOPPED, pi.getStatus());
     }
 
-    @Test
+    //@Test
     public void testKillPing() throws Exception {
 
         String pingCommand;
@@ -202,7 +202,7 @@ public class ProcessConveyorTest {
         assertEquals(ProcessStatus.KILLED, pi.getStatus());
     }
 
-    @Test
+    //@Test
     public void testTimeoutPing() throws Exception {
 
         String pingCommand;

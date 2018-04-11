@@ -18,17 +18,18 @@ limitations under the License.
 
 package com.epam.dlab.core.parser;
 
-import static junit.framework.TestCase.assertEquals;
-
+import com.epam.dlab.model.aws.BillingResourceType;
 import org.junit.Test;
 
-public class ResourceTypeTest {
+import static junit.framework.TestCase.assertEquals;
+
+public class BillingResourceTypeTest {
 	
 	@Test
 	public void test() {
-		ResourceType type = ResourceType.of("cluster");
+		BillingResourceType type = BillingResourceType.of("cluster");
 		
-		assertEquals(ResourceType.CLUSTER, type);
-		assertEquals(ResourceType.CLUSTER.toString(), "CLUSTER");
+		assertEquals(BillingResourceType.CLUSTER, type);
+		assertEquals(BillingResourceType.CLUSTER.toString(), "CLUSTER");
 	}
 }

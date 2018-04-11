@@ -16,11 +16,11 @@ limitations under the License.
 
 ****************************************************************************/
 
-package com.epam.dlab.core.parser;
+package com.epam.dlab.model.aws;
 
 /** Billing resource types.
  */
-public enum ResourceType {
+public enum BillingResourceType {
 	COMPUTER,
 	CLUSTER,
 	STORAGE,
@@ -29,9 +29,9 @@ public enum ResourceType {
 	IP_ADDRESS,
 	OTHER;
 	
-    public static ResourceType of(String string) {
+    public static BillingResourceType of(String string) {
         if (string != null) {
-            for (ResourceType value : ResourceType.values()) {
+            for (BillingResourceType value : BillingResourceType.values()) {
                 if (string.equalsIgnoreCase(value.toString())) {
                     return value;
                 }
@@ -43,7 +43,7 @@ public enum ResourceType {
     /** Return the category of resource.
      * @param resourceType the type of resource.
      */
-    public static String category(ResourceType resourceType) {
+    public static String category(BillingResourceType resourceType) {
     	switch (resourceType) {
 		case COMPUTER:
 			return "EC2";

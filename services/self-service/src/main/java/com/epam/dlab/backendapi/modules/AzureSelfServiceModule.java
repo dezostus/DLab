@@ -22,7 +22,6 @@ import com.epam.dlab.backendapi.SelfServiceApplication;
 import com.epam.dlab.backendapi.auth.SelfServiceSecurityAuthenticator;
 import com.epam.dlab.backendapi.dao.KeyDAO;
 import com.epam.dlab.backendapi.dao.azure.AzureKeyDao;
-import com.epam.dlab.backendapi.domain.azure.BillingSchedulerManagerAzure;
 import com.epam.dlab.backendapi.resources.SecurityResource;
 import com.epam.dlab.backendapi.resources.azure.AzureOauthResource;
 import com.epam.dlab.backendapi.resources.azure.BillingResourceAzure;
@@ -83,8 +82,6 @@ public class AzureSelfServiceModule extends CloudModule {
 							injector.getInstance(SecurityResource.class).userLogout(ui),
 							maxSessionDurabilityMilliseconds));
 		}
-
-		environment.lifecycle().manage(injector.getInstance(BillingSchedulerManagerAzure.class));
 
 		injector.getInstance(SecurityFactory.class).configure(injector, environment,
 				SelfServiceSecurityAuthenticator.class, injector.getInstance(Authorizer.class));

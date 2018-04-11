@@ -16,7 +16,7 @@ limitations under the License.
 
 ****************************************************************************/
 
-package com.epam.dlab.exception;
+package com.epam.dlab.exceptions;
 
 /** Exception for the error of initialization.
  */

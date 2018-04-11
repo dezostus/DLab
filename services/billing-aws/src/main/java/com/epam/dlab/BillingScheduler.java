@@ -28,9 +28,9 @@ import com.epam.dlab.configuration.BillingToolConfiguration;
 import com.epam.dlab.configuration.BillingToolConfigurationFactory;
 import com.epam.dlab.configuration.SchedulerConfiguration;
 import com.epam.dlab.core.parser.ParserBase;
-import com.epam.dlab.exception.AdapterException;
-import com.epam.dlab.exception.InitializationException;
-import com.epam.dlab.exception.ParseException;
+import com.epam.dlab.exceptions.AdapterException;
+import com.epam.dlab.exceptions.InitializationException;
+import com.epam.dlab.exceptions.ParseException;
 import com.epam.dlab.utils.ServiceUtils;
 
 /** Billing scheduler for loading billing report.
