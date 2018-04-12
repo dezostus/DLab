@@ -47,6 +47,11 @@
             <groupId>com.epam.dlab</groupId>
             <artifactId>dlab-auth-common</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
 

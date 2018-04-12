@@ -1,10 +1,10 @@
 package com.epam.dlab.auth.gcp.resources;
 
 
+import com.epam.dlab.auth.contract.SecurityAPI;
 import com.epam.dlab.auth.oauth2.Oauth2AuthenticationService;
 import com.epam.dlab.dto.gcp.auth.GcpOauth2AuthorizationCodeResponse;
 import com.epam.dlab.exceptions.DlabAuthenticationException;
-import com.epam.dlab.rest.contracts.SecurityAPI;
 import com.google.inject.Inject;
 
 import javax.ws.rs.GET;

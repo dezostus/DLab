@@ -31,7 +31,7 @@ import com.epam.dlab.core.parser.ParserBase;
 import com.epam.dlab.exceptions.AdapterException;
 import com.epam.dlab.exceptions.InitializationException;
 import com.epam.dlab.exceptions.ParseException;
-import com.epam.dlab.utils.ServiceUtils;
+import com.epam.dlab.util.ServiceUtils;
 
 /** Billing scheduler for loading billing report.
  */

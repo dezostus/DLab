@@ -61,7 +61,7 @@ import com.epam.dlab.dto.gcp.exploratory.ExploratoryCreateGcp;
 import com.epam.dlab.dto.gcp.keyload.UploadFileGcp;
 import com.epam.dlab.exceptions.DlabException;
 import com.epam.dlab.model.exloratory.Exploratory;
-import com.epam.dlab.utils.UsernameUtils;
+import com.epam.dlab.util.UsernameUtils;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 

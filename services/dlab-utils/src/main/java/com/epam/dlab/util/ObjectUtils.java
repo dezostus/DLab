@@ -16,7 +16,7 @@
 
  ****************************************************************************/
 
-package com.epam.dlab.utils;
+package com.epam.dlab.util;
 
 import java.util.Objects;
 import java.util.function.Function;

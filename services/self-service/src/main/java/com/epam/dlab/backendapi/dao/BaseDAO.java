@@ -19,7 +19,7 @@
 package com.epam.dlab.backendapi.dao;
 
 import com.epam.dlab.exceptions.DlabException;
-import com.epam.dlab.mongo.IsoDateModule;
+import com.epam.dlab.util.mongo.IsoDateModule;
 import com.epam.dlab.mongo.MongoService;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.ObjectMapper;

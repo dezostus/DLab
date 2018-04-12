@@ -59,6 +59,8 @@ limitations under the License.
         <module>services/dlab-auth-common</module>
         <module>services/dlab-rest-client</module>
         <module>services/dlab-model</module>
+        <module>services/dlab-utils</module>
+        <module>services/dlab-webapp-common</module>
     </modules>
 
     <properties>

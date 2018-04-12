@@ -20,7 +20,7 @@ package com.epam.dlab.backendapi.dao;
 
 import com.epam.dlab.auth.dto.UserCredentialDTO;
 import com.epam.dlab.exceptions.DlabException;
-import com.epam.dlab.utils.UsernameUtils;
+import com.epam.dlab.util.UsernameUtils;
 import com.google.inject.Singleton;
 import com.mongodb.client.FindIterable;
 import org.bson.Document;

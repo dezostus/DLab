@@ -23,7 +23,7 @@ import com.epam.dlab.backendapi.roles.RoleType;
 import com.epam.dlab.backendapi.roles.UserRoles;
 import com.epam.dlab.billing.BillingCalculationUtils;
 import com.epam.dlab.billing.DlabResourceType;
-import com.epam.dlab.utils.UsernameUtils;
+import com.epam.dlab.util.UsernameUtils;
 import com.google.common.collect.Lists;
 import com.mongodb.client.AggregateIterable;
 import com.mongodb.client.FindIterable;

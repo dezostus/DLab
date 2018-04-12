@@ -58,8 +58,9 @@
             <artifactId>dropwizard-template-config</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.google.inject</groupId>
-            <artifactId>guice</artifactId>
+            <groupId>com.epam.dlab</groupId>
+            <artifactId>dlab-webapp-common</artifactId>
+            <version>${project.parent.version}</version>
         </dependency>
         <dependency>
             <groupId>com.epam.dlab</groupId>

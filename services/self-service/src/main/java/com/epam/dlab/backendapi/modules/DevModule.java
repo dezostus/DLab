@@ -36,7 +36,7 @@ import com.epam.dlab.constants.ServiceConsts;
 import com.epam.dlab.mongo.MongoService;
 import com.epam.dlab.rest.client.RESTService;
 import com.epam.dlab.rest.contracts.DockerAPI;
-import com.epam.dlab.rest.contracts.SecurityAPI;
+import com.epam.dlab.auth.contract.SecurityAPI;
 import com.google.inject.name.Names;
 import io.dropwizard.auth.Authorizer;
 import io.dropwizard.setup.Environment;

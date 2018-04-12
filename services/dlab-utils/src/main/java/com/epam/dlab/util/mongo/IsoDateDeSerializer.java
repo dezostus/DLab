@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.epam.dlab.mongo;
+package com.epam.dlab.util.mongo;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.ObjectCodec;

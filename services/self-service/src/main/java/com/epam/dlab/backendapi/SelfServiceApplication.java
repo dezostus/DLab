@@ -27,7 +27,7 @@ import com.epam.dlab.backendapi.resources.callback.*;
 import com.epam.dlab.cloud.CloudModule;
 import com.epam.dlab.constants.ServiceConsts;
 import com.epam.dlab.rest.mappers.*;
-import com.epam.dlab.utils.ServiceUtils;
+import com.epam.dlab.util.ServiceUtils;
 import com.fiestacabin.dropwizard.quartz.ManagedScheduler;
 import com.google.inject.Guice;
 import com.google.inject.Injector;

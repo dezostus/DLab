@@ -20,7 +20,7 @@ package com.epam.dlab.auth;
 
 import com.epam.dlab.constants.ServiceConsts;
 import com.epam.dlab.rest.client.RESTService;
-import com.epam.dlab.rest.contracts.SecurityAPI;
+import com.epam.dlab.auth.contract.SecurityAPI;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 import io.dropwizard.auth.AuthenticationException;

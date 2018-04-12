@@ -9,22 +9,4 @@
     </parent>
     
     <artifactId>common</artifactId>
-
-    <dependencies>
-        <dependency>
-            <groupId>com.epam.dlab</groupId>
-            <artifactId>dlab-rest-client</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.inject</groupId>
-            <artifactId>guice</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.mongodb</groupId>
-            <artifactId>mongo-java-driver</artifactId>
-            <version>${org.mongodb.version}</version>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
 </project>

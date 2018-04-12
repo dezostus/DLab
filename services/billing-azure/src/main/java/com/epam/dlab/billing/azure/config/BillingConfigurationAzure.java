@@ -34,6 +34,7 @@ public class BillingConfigurationAzure {
     private String currency;
     private String locale;
     private String regionInfo;
+    private boolean billingEnabled;
 
     private AggregationOutputMongoDataSource aggregationOutputMongoDataSource;
 }

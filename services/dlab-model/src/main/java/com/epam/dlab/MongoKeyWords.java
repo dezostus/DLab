@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.epam.dlab.mongo;
+package com.epam.dlab;
 
 public abstract class MongoKeyWords {
     public static final String EDGE_COLLECTION = "userCloudCredentials";

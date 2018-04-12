@@ -24,8 +24,8 @@ import com.epam.dlab.backendapi.core.response.folderlistener.FolderListenerExecu
 import com.epam.dlab.dto.base.keyload.ReuploadFile;
 import com.epam.dlab.rest.client.RESTService;
 import com.epam.dlab.rest.contracts.KeyAPI;
-import com.epam.dlab.utils.FileUtils;
-import com.epam.dlab.utils.UsernameUtils;
+import com.epam.dlab.util.FileUtils;
+import com.epam.dlab.util.UsernameUtils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.google.inject.Inject;
 import io.dropwizard.auth.Auth;

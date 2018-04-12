@@ -39,6 +39,8 @@ regionInfo: <REGION_INFO>
 initialDelay: 10
 period: 60
 
+billingEnabled: false
+
 aggregationOutputMongoDataSource:
     host: localhost
     port: 27017

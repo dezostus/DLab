@@ -16,7 +16,7 @@
 
  ****************************************************************************/
 
-package com.epam.dlab.rest.contracts;
+package com.epam.dlab.auth.contract;
 
 public interface SecurityAPI {
 	String LOGIN = "login";

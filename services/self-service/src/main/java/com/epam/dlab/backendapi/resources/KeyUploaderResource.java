@@ -19,7 +19,6 @@ package com.epam.dlab.backendapi.resources;
 import com.epam.dlab.auth.UserInfo;
 import com.epam.dlab.backendapi.service.AccessKeyService;
 import com.epam.dlab.dto.keyload.KeyLoadStatus;
-import com.epam.dlab.exceptions.DlabException;
 import com.epam.dlab.exceptions.DlabValidationException;
 import com.epam.dlab.rest.contracts.EdgeAPI;
 import com.google.inject.Inject;
@@ -32,11 +31,6 @@ import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.stream.Collectors;
 
 /**
  * Provides the REST API for upload the user key.
@@ -75,8 +69,7 @@ public class KeyUploaderResource implements EdgeAPI {
 	 * will be performed (user's key will be reuploaded).
 	 *
 	 * @param userInfo            user info.
-	 * @param uploadedInputStream content of the user key.
-	 * @param fileDetail          content type and content disposition of input data
+	 * @param fileContent content of the user key.
 	 * @param isPrimaryUploading  true if key is being primarily uploaded, false - in case of reuploading
 	 *
 	 * @return 200 Ok

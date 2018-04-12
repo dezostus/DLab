@@ -16,7 +16,7 @@
 
  ****************************************************************************/
 
-package com.epam.dlab.utils;
+package com.epam.dlab.util;
 
 public class UsernameUtils {
 

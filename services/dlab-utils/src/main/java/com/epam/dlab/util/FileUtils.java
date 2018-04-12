@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.epam.dlab.utils;
+package com.epam.dlab.util;
 
 import com.epam.dlab.exceptions.DlabException;
 import lombok.extern.slf4j.Slf4j;

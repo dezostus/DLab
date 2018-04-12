@@ -1,4 +1,6 @@
-package com.epam.dlab.utils;
+package com.epam.dlab.util;
+
+import com.epam.dlab.exceptions.DlabException;
 
 import java.io.IOException;
 import java.net.JarURLConnection;
@@ -9,15 +11,12 @@ import java.util.jar.Attributes;
 import java.util.jar.JarFile;
 import java.util.jar.Manifest;
 
-import com.epam.dlab.constants.ServiceConsts;
-import com.epam.dlab.exceptions.DlabException;
-
 public class ServiceUtils {
 
 	private static String includePath = null;
 	
 	static {
-        includePath = System.getenv(ServiceConsts.DLAB_CONF_DIR_NAME);
+        includePath = System.getenv("DLAB_CONF_DIR");
         if ( includePath == null || includePath.isEmpty() ) {
         	includePath = getUserDir();
         }

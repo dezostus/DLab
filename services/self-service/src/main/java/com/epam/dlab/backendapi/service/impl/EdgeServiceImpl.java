@@ -16,7 +16,9 @@ import com.google.inject.name.Named;
 import lombok.extern.slf4j.Slf4j;
 
 import static com.epam.dlab.dto.UserInstanceStatus.*;
-import static com.epam.dlab.rest.contracts.EdgeAPI.*;
+import static com.epam.dlab.rest.contracts.EdgeAPI.EDGE_START;
+import static com.epam.dlab.rest.contracts.EdgeAPI.EDGE_STOP;
+import static com.epam.dlab.rest.contracts.EdgeAPI.EDGE_TERMINATE;
 
 @Singleton
 @Slf4j

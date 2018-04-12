@@ -6,7 +6,6 @@ import com.epam.dlab.auth.UserVerificationService;
 import com.epam.dlab.auth.azure.AzureAuthenticationResource;
 import com.epam.dlab.auth.azure.AzureLoginUrlBuilder;
 import com.epam.dlab.auth.azure.AzureSecurityResource;
-import com.epam.dlab.auth.azure.DlabExceptionMapper;
 import com.epam.dlab.auth.azure.service.AzureAuthorizationCodeService;
 import com.epam.dlab.auth.azure.service.AzureAuthorizationCodeServiceImpl;
 import com.epam.dlab.auth.conf.AzureLoginConfiguration;
@@ -49,7 +48,6 @@ public class AzureSecurityServiceModule extends CloudModule {
 	@Override
 	public void init(Environment environment, Injector injector) {
 
-		environment.jersey().register(new DlabExceptionMapper());
 		if (conf.getAzureLoginConfiguration().isUseLdap()) {
 			environment.jersey().register(injector.getInstance(SynchronousLdapAuthenticationService.class));
 		} else {

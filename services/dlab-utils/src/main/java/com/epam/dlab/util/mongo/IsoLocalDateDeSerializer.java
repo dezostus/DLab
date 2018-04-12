@@ -1,4 +1,4 @@
-package com.epam.dlab.mongo;
+package com.epam.dlab.util.mongo;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.ObjectCodec;
@@ -11,7 +11,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneOffset;
 
-import static com.epam.dlab.mongo.IsoDateDeSerializer.DATE_NODE;
+import static com.epam.dlab.util.mongo.IsoDateDeSerializer.DATE_NODE;
 
 public class IsoLocalDateDeSerializer extends JsonDeserializer<LocalDate> {
 	@Override
