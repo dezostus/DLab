@@ -19,14 +19,18 @@ package com.epam.dlab.billing.azure;
 import com.epam.dlab.MongoKeyWords;
 import com.epam.dlab.billing.azure.config.AzureAuthFile;
 import com.epam.dlab.billing.azure.config.BillingConfigurationAzure;
+import com.epam.dlab.billing.azure.logging.AppenderConsole;
+import com.epam.dlab.billing.azure.logging.AppenderFile;
 import com.epam.dlab.billing.azure.model.AzureDailyResourceInvoice;
 import com.epam.dlab.billing.azure.model.AzureDlabBillableResource;
 import com.epam.dlab.billing.azure.model.BillingPeriod;
 import com.epam.dlab.exceptions.DlabException;
+import com.epam.dlab.exceptions.InitializationException;
 import com.epam.dlab.util.mongo.IsoDateModule;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+import com.fasterxml.jackson.datatype.guava.GuavaModule;
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.UpdateOptions;
@@ -55,10 +59,12 @@ public class BillingSchedulerAzure {
 	private BillingConfigurationAzure billingConfigurationAzure;
 	private MongoDbBillingClient mongoDbBillingClient;
 
-	public BillingSchedulerAzure(String filePath) throws IOException {
+	public BillingSchedulerAzure(String filePath) throws IOException, InitializationException {
 		try (FileInputStream fin = new FileInputStream(filePath)) {
-			this.billingConfigurationAzure = new ObjectMapper(new YAMLFactory()).readValue(fin,
-					BillingConfigurationAzure.class);
+			final ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory()).registerModule(new GuavaModule());
+			objectMapper.registerSubtypes(AppenderFile.class, AppenderConsole.class);
+			this.billingConfigurationAzure = objectMapper.readValue(fin,
+							BillingConfigurationAzure.class);
 
 			Path path = Paths.get(billingConfigurationAzure.getAuthenticationFile());
 
@@ -87,6 +93,7 @@ public class BillingSchedulerAzure {
 							billingConfigurationAzure.getAggregationOutputMongoDataSource().getDatabase(),
 							billingConfigurationAzure.getAggregationOutputMongoDataSource().getUsername(),
 							billingConfigurationAzure.getAggregationOutputMongoDataSource().getPassword());
+			this.billingConfigurationAzure.getLogging().configure();
 		}
 	}
 

@@ -36,5 +36,6 @@ public class BillingConfigurationAzure {
     private String regionInfo;
     private boolean billingEnabled;
 
+    private LoggingConfigurationFactory logging;
     private AggregationOutputMongoDataSource aggregationOutputMongoDataSource;
 }
