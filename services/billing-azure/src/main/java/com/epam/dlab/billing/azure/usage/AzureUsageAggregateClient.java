@@ -26,9 +26,6 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.core.MediaType;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
@@ -43,7 +40,8 @@ public class AzureUsageAggregateClient {
 		this.authToken = authToken;
 	}
 
-	public UsageAggregateResponse getUsageAggregateResponse(String from, String to) throws IOException {
+	public UsageAggregateResponse getUsageAggregateResponse(String from, String to) throws IOException,
+			URISyntaxException {
 		try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
 
 			final URIBuilder uriBuilder = new URIBuilder("https://management.azure.com/subscriptions/" +
@@ -62,7 +60,7 @@ public class AzureUsageAggregateClient {
 			return postProcess(usageAggregateResponse);
 		} catch (URISyntaxException e) {
 			log.error("Cannot retrieve usage detail due to ", e);
-			throw new RuntimeException(e);
+			throw e;
 		}
 	}
 
@@ -76,27 +74,6 @@ public class AzureUsageAggregateClient {
 					(httpClient.execute(request).getEntity()), UsageAggregateResponse.class);
 			return postProcess(usageAggregateResponse);
 		}
-		/*Client client = null;
-
-		try {
-			client = ClientBuilder.newClient();
-
-			UsageAggregateResponse usageAggregateResponse = client
-					.target(nextUrl)
-					.request(MediaType.APPLICATION_JSON_TYPE)
-					.header("Authorization", String.format("Bearer %s", authToken))
-					.get(UsageAggregateResponse.class);
-
-			return postProcess(usageAggregateResponse);
-
-		} catch (IOException | RuntimeException e) {
-			log.error("Cannot retrieve rate card due to ", e);
-			throw e;
-		} finally {
-			if (client != null) {
-				client.close();
-			}
-		}*/
 	}
 
 	public void setAuthToken(String authToken) {
