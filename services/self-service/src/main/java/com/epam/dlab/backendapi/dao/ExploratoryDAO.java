@@ -195,7 +195,7 @@ public class ExploratoryDAO extends BaseDAO {
 	}
 
 	/**
-	 * Finds and returns the info of exploratory.
+	 * Checks if exploratory exists.
 	 *
 	 * @param user            user name.
 	 * @param exploratoryName the name of exploratory.
@@ -271,11 +271,11 @@ public class ExploratoryDAO extends BaseDAO {
 	 * @param dto object of scheduler data.
 	 * @return The result of an update operation.
 	 */
-	public UpdateResult updateSchedulerDataForUserAndExploratory(String user, String exploratoryName, SchedulerJobDTO
-			dto) {
+	public UpdateResult updateSchedulerDataForUserAndExploratory(String user, String exploratoryName,
+																 SchedulerJobDTO dto) {
 		return updateOne(USER_INSTANCES,
 				exploratoryCondition(user, exploratoryName),
-				set(SCHEDULER_DATA, convertToBson(dto)));
+				set(SCHEDULER_DATA, Objects.isNull(dto) ? null : convertToBson(dto)));
 	}
 
 	/**
@@ -285,8 +285,8 @@ public class ExploratoryDAO extends BaseDAO {
 	 * @param exploratoryStatus    status of exploratory.
 	 * @param reuploadKeyRequired  true/false.
 	 */
-	public void updateReuploadKeyForCorrespondingExploratories(String user, UserInstanceStatus exploratoryStatus,
-															   boolean reuploadKeyRequired) {
+	public void updateReuploadKeyForExploratories(String user, UserInstanceStatus exploratoryStatus,
+												  boolean reuploadKeyRequired) {
 		updateMany(USER_INSTANCES, exploratoryStatusCondition(user, exploratoryStatus),
 				set(REUPLOAD_KEY_REQUIRED, reuploadKeyRequired));
 	}

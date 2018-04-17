@@ -72,6 +72,9 @@ public class BillingToolConfiguration {
 	@JsonProperty
 	private String password;
 
+	@JsonProperty
+	private boolean billingEnabled;
+
 	/**
 	 * Working data file name of modules.
 	 */
@@ -279,6 +282,9 @@ public class BillingToolConfiguration {
 		return parser.build(in, out, f);
 	}
 
+	public boolean isBillingEnabled() {
+		return billingEnabled;
+	}
 
 	/**
 	 * Returns a string representation of the object.
@@ -293,7 +299,8 @@ public class BillingToolConfiguration {
 				.add("adapterOut", adapterOut)
 				.add("filter", filter)
 				.add("parser", parser)
-				.add("logging", logging);
+				.add("logging", logging)
+				.add("billingEnabled", billingEnabled);
 	}
 
 	@Override

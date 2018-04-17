@@ -60,7 +60,7 @@ logging:
     org.hibernate: WARN
   #Logging appenders
   appenders:
-    - type: console
+    #- type: console
     - type: file
       currentLogFilename: /var/opt/dlab/log/ssn/billing.log
       archive: true
