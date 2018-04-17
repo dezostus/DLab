@@ -41,7 +41,7 @@ import javax.ws.rs.core.Response.Status;
 @Slf4j
 public class KeyUploaderResource implements EdgeAPI {
 
-	private static final String FILE_ATTACHMENT_FORMAT = "attachment; filename=\"%s.key\"";
+	private static final String FILE_ATTACHMENT_FORMAT = "attachment; filename=\"%s.pem\"";
 	@Inject
 	private AccessKeyService keyService;
 

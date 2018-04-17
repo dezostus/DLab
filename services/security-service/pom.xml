@@ -100,6 +100,11 @@
             <artifactId>conveyor</artifactId>
             <version>${com.aegisql.conveyor.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.epam.dlab</groupId>
+            <artifactId>dlab-utils</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
     </dependencies>
 
     <build>

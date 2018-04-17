@@ -18,7 +18,7 @@ limitations under the License.
 
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { EnvironmentStatusModel } from './environment-status.model';
-import { HealthStatusService, BackupService } from '../core/services';
+import { HealthStatusService, BackupService, UserResourceService } from '../core/services';
 
 @Component({
   moduleId: module.id,
@@ -30,8 +30,8 @@ export class HealthStatusComponent implements OnInit {
   environmentsHealthStatuses: Array<EnvironmentStatusModel>;
   healthStatus: string;
   billingEnabled: boolean;
-  backupAllowed: boolean;
   isAdmin: boolean;
+  envInProgress: boolean = false;
   usersList: Array<string> = [];
 
   private clear = undefined;
@@ -40,7 +40,8 @@ export class HealthStatusComponent implements OnInit {
 
   constructor(
     private healthStatusService: HealthStatusService,
-    private backupService: BackupService
+    private backupService: BackupService,
+    private userResourceService: UserResourceService
   ) {}
 
   ngOnInit(): void {
@@ -56,10 +57,9 @@ export class HealthStatusComponent implements OnInit {
   loadHealthStatusList(healthStatusList): Array<EnvironmentStatusModel> {
     this.healthStatus = healthStatusList.status;
     this.billingEnabled = healthStatusList.billingEnabled;
-    this.backupAllowed = healthStatusList.backupAllowed;
     this.isAdmin = healthStatusList.admin;
 
-    if (this.isAdmin) this.getActiveUsersList().subscribe((res: any) => this.usersList = res);
+    this.getExploratoryList();
 
     if (healthStatusList.list_resources)
       return healthStatusList.list_resources.map(value => {
@@ -79,7 +79,7 @@ export class HealthStatusComponent implements OnInit {
   getActiveUsersList() {
     return this.healthStatusService.getActiveUsers()
   }
-
+ 
   openManageEnvironmentDialog() {
     this.getActiveUsersList().subscribe(usersList => {
       this.manageEnvironmentDialog.open({ isFooter: false }, usersList);
@@ -105,6 +105,17 @@ export class HealthStatusComponent implements OnInit {
       this.getBackupStatus(result);
       this.clear = window.setInterval(() => this.getBackupStatus(result), 3000);
     });
+  }
+
+  getExploratoryList() {
+    this.userResourceService.getUserProvisionedResources()
+      .subscribe((result) => {
+        this.envInProgress = this.isEnvironmentsInProgress(result);
+      });
+  }
+
+  isEnvironmentsInProgress(data): boolean {
+    return data.exploratory.some(el => el.status === 'creating');
   }
 
   private getBackupStatus(result) {

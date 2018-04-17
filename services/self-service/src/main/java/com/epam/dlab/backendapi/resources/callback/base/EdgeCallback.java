@@ -36,6 +36,10 @@ public class EdgeCallback {
 
 	protected void handleEdgeCallback(String user, String status) {
 		try {
+			if (UserInstanceStatus.of(status) == UserInstanceStatus.TERMINATED) {
+				log.debug("Removing key for user {}", user);
+				keyDAO.deleteKey(user);
+			}
 			log.debug("Updating the status of EDGE node for user {} to {}", user, status);
 			keyDAO.updateEdgeStatus(user, status);
 
