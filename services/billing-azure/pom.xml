@@ -29,7 +29,6 @@
     <artifactId>billing-azure</artifactId>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/com.microsoft.azure/azure-client-authentication -->
         <dependency>
             <groupId>com.microsoft.azure</groupId>
             <artifactId>azure-client-authentication</artifactId>
@@ -48,7 +47,6 @@
             <version>${org.mongodb.version}</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-yaml -->
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-yaml</artifactId>
@@ -58,7 +56,6 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.2.3</version>
         </dependency>
 
         <dependency>
@@ -66,13 +63,11 @@
             <artifactId>httpclient</artifactId>
             <version>4.5.5</version>
         </dependency>
-
         <dependency>
-            <groupId>com.epam.dlab</groupId>
-            <artifactId>dlab-utils</artifactId>
-            <version>${project.parent.version}</version>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-guava</artifactId>
+            <version>2.9.5</version>
         </dependency>
-
     </dependencies>
 
     <build>

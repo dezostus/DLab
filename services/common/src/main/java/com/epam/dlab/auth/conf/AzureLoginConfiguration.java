@@ -16,35 +16,21 @@
 
 package com.epam.dlab.auth.conf;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 
 @Getter
 public class AzureLoginConfiguration {
-    @JsonProperty
-    private boolean useLdap;
-    @JsonProperty
-    private boolean silent;
-    @JsonProperty
-    private String tenant;
-    @JsonProperty
-    private String authority;
-    @JsonProperty
-    private String clientId;
-    @JsonProperty
-    private String redirectUrl;
-    @JsonProperty
-    private String responseMode;
-    @JsonProperty
-    private String prompt;
-    @JsonProperty
-    private String loginPage;
-    @JsonProperty
-    private boolean validatePermissionScope;
-    @JsonProperty
-    private String permissionScope;
-    @JsonProperty
-    private String managementApiAuthFile;
-    @JsonProperty
-    private long maxSessionDurabilityMilliseconds = 8L * 60L * 60L * 1000L;// 8 hours
+	private boolean useLdap;
+	private boolean silent;
+	private String tenant;
+	private String authority;
+	private String clientId;
+	private String redirectUrl;
+	private String responseMode;
+	private String prompt;
+	private String loginPage;
+	private boolean validatePermissionScope;
+	private String permissionScope;
+	private String managementApiAuthFile;
+	private long maxSessionDurabilityMilliseconds = 8L * 60L * 60L * 1000L;// 8 hours
 }

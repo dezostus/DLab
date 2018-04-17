@@ -22,8 +22,7 @@ import com.epam.dlab.process.model.DlabProcess;
 import com.epam.dlab.process.model.ProcessId;
 import com.epam.dlab.process.model.ProcessInfo;
 import com.epam.dlab.process.model.ProcessStatus;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -38,9 +37,8 @@ import java.util.function.Supplier;
 
 import static com.epam.dlab.process.model.ProcessStatus.*;
 
+@Slf4j
 public class ProcessInfoBuilder implements Supplier<ProcessInfo>, Testing, TimeoutAction, Expireable {
-
-	private static final Logger LOG = LoggerFactory.getLogger(ProcessInfoBuilder.class);
 
 	private final ProcessId processId;
 	private final long startTimeStamp = System.currentTimeMillis();
@@ -167,7 +165,7 @@ public class ProcessInfoBuilder implements Supplier<ProcessInfo>, Testing, Timeo
 			try {
 				future.get();
 			} catch (Exception e) {
-				LOG.error("Exception occurred during getting future result: {}", e.getMessage());
+				log.error("Exception occurred during getting future result: {}", e.getMessage());
 			}
 		});
 	}
@@ -234,12 +232,12 @@ public class ProcessInfoBuilder implements Supplier<ProcessInfo>, Testing, Timeo
 	@Override
 	public void onTimeout() {
 		if (status != TIMEOUT) {
-			LOG.debug("Stopping on timeout ...");
+			log.debug("Stopping on timeout ...");
 			stop(this, "STOP");
 			status = TIMEOUT;
 			expirationTime += 60_000;
 		} else {
-			LOG.debug("Killing on timeout ...");
+			log.debug("Killing on timeout ...");
 			kill(this, "KILL");
 			status = TIMEOUT;
 			setReady();
@@ -258,7 +256,7 @@ public class ProcessInfoBuilder implements Supplier<ProcessInfo>, Testing, Timeo
 			if (pidSupplier == null) {
 				Class<?> cProcessImpl = process.getClass();
 				final Field fPid = cProcessImpl.getDeclaredField("pid");
-				LOG.debug("PID field found");
+				log.debug("PID field found");
 				if (!fPid.isAccessible()) {
 					fPid.setAccessible(true);
 				}
@@ -266,14 +264,14 @@ public class ProcessInfoBuilder implements Supplier<ProcessInfo>, Testing, Timeo
 					try {
 						return fPid.getInt(p);
 					} catch (IllegalAccessException e) {
-						LOG.error("Unable to access PID. {}", e.getMessage());
+						log.error("Unable to access PID. {}", e.getMessage());
 						return -1;
 					}
 				};
 			}
 			return pidSupplier.apply(process);
 		} catch (NoSuchFieldException e) {
-			LOG.debug("PID field not found");
+			log.debug("PID field not found");
 			pidSupplier = p -> -1;
 			return -1;
 		}

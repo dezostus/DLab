@@ -33,6 +33,11 @@
             <groupId>com.epam.dlab</groupId>
             <artifactId>common</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-jackson</artifactId>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
 </project>

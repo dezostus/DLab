@@ -79,6 +79,8 @@ limitations under the License.
         <maven-shade-plugin.version>2.4.3</maven-shade-plugin.version>
         <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss</maven.build.timestamp.format>
         <lombok.version>1.16.18</lombok.version>
+        <hibernate.validator.version>5.4.2.Final</hibernate.validator.version>
+        <logback.version>1.2.3</logback.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -112,15 +114,26 @@ limitations under the License.
                 <artifactId>dlab-auth-common</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.dropwizard</groupId>
+                <artifactId>dropwizard-jackson</artifactId>
+                <version>${io.dropwizard.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.dropwizard</groupId>
+                <artifactId>dropwizard-util</artifactId>
+                <version>${io.dropwizard.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
     <dependencies>
-        <dependency>
-            <groupId>io.dropwizard</groupId>
-            <artifactId>dropwizard-jackson</artifactId>
-            <version>${io.dropwizard.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
