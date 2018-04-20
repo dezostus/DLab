@@ -54,8 +54,7 @@ public class ModuleFactory {
 			case GCP:
 				return new GcpSelfServiceModule();
 			default:
-				throw new UnsupportedOperationException("Unsupported cloud provider " + configuration.getCloudProvider
-						());
+				throw new UnsupportedOperationException("Unsupported cloud provider " + configuration.getCloudProvider());
 		}
 	}
 }
