@@ -47,7 +47,7 @@ public class AzureRateCardClient {
 
 			final URIBuilder uriBuilder = new URIBuilder("https://management.azure.com/subscriptions/" +
 					billingConfigurationAzure.getSubscriptionId() + "/providers/Microsoft.Commerce/RateCard")
-					.addParameter("api-version", "2015-06-01-preview")
+					.addParameter("api-version", "2016-08-31-preview")
 					.addParameter("$filter", String.format("OfferDurableId eq '%s' and Currency eq '%s' and Locale " +
 									"eq '%s' and RegionInfo eq '%s'", billingConfigurationAzure.getOfferNumber(),
 							billingConfigurationAzure.getCurrency(), billingConfigurationAzure.getLocale(),
