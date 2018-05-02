@@ -398,7 +398,7 @@ public class SchedulerJobServiceImplTest {
 
 		schedulerJobService.executeStartResourceJob(false);
 
-		verify(schedulerJobDAO).getSchedulerJobsToAchieveStatus(refEq(RUNNING), eq(false));
+		verify(schedulerJobDAO).getSchedulerJobsToAchieveStatus(refEq(UserInstanceStatus.RUNNING), eq(false));
 		verify(exploratoryService).start(userInfo, EXPLORATORY_NAME);
 		verify(schedulerJobDAO).fetchSingleSchedulerJobByUserAndExploratory(USER, EXPLORATORY_NAME);
 		verify(systemUserService).create(USER);
@@ -449,10 +449,10 @@ public class SchedulerJobServiceImplTest {
 
 		schedulerJobService.executeStartResourceJob(false);
 
-		verify(schedulerJobDAO).getSchedulerJobsToAchieveStatus(refEq(RUNNING), eq(false));
+		verify(schedulerJobDAO).getSchedulerJobsToAchieveStatus(refEq(UserInstanceStatus.RUNNING), eq(false));
 		verify(schedulerJobDAO).fetchSingleSchedulerJobByUserAndExploratory(USER, EXPLORATORY_NAME);
 		verify(computationalDAO).getComputationalResourcesWhereStatusIn(USER, DataEngineType.SPARK_STANDALONE,
-				EXPLORATORY_NAME, STOPPED);
+				EXPLORATORY_NAME, UserInstanceStatus.STOPPED);
 		verify(schedulerJobDAO).fetchSingleSchedulerJobForCluster(USER, EXPLORATORY_NAME, COMPUTATIONAL_NAME);
 		verify(systemUserService, times(2)).create(USER);
 		verify(exploratoryService).start(userInfo, EXPLORATORY_NAME);
@@ -502,10 +502,10 @@ public class SchedulerJobServiceImplTest {
 
 		schedulerJobService.executeStartResourceJob(false);
 
-		verify(schedulerJobDAO).getSchedulerJobsToAchieveStatus(refEq(RUNNING), eq(false));
+		verify(schedulerJobDAO).getSchedulerJobsToAchieveStatus(refEq(UserInstanceStatus.RUNNING), eq(false));
 		verify(schedulerJobDAO).fetchSingleSchedulerJobByUserAndExploratory(USER, EXPLORATORY_NAME);
 		verify(computationalDAO).getComputationalResourcesWhereStatusIn(USER, DataEngineType.SPARK_STANDALONE,
-				EXPLORATORY_NAME, STOPPED);
+				EXPLORATORY_NAME, UserInstanceStatus.STOPPED);
 		verify(schedulerJobDAO).fetchSingleSchedulerJobForCluster(USER, EXPLORATORY_NAME, COMPUTATIONAL_NAME);
 		verify(systemUserService).create(USER);
 		verify(exploratoryService).start(userInfo, EXPLORATORY_NAME);
@@ -518,7 +518,7 @@ public class SchedulerJobServiceImplTest {
 		when(schedulerJobDAO.getSchedulerJobsToAchieveStatus(any(UserInstanceStatus.class), anyBoolean()))
 				.thenReturn(Collections.emptyList());
 		schedulerJobService.executeStartResourceJob(false);
-		verify(schedulerJobDAO).getSchedulerJobsToAchieveStatus(refEq(RUNNING), eq(false));
+		verify(schedulerJobDAO).getSchedulerJobsToAchieveStatus(refEq(UserInstanceStatus.RUNNING), eq(false));
 		verify(systemUserService, never()).create(any());
 		verify(exploratoryService, never()).start(any(), any());
 		verifyNoMoreInteractions(schedulerJobDAO);
@@ -534,7 +534,7 @@ public class SchedulerJobServiceImplTest {
 
 		schedulerJobService.executeStartResourceJob(true);
 
-		verify(schedulerJobDAO).getSchedulerJobsToAchieveStatus(refEq(RUNNING), eq(true));
+		verify(schedulerJobDAO).getSchedulerJobsToAchieveStatus(refEq(UserInstanceStatus.RUNNING), eq(true));
 		verify(systemUserService).create(USER);
 		verify(computationalService).startSparkCluster(userInfo, EXPLORATORY_NAME, COMPUTATIONAL_NAME);
 		verifyNoMoreInteractions(schedulerJobDAO, systemUserService, computationalService);
@@ -546,7 +546,7 @@ public class SchedulerJobServiceImplTest {
 		when(schedulerJobDAO.getSchedulerJobsToAchieveStatus(any(UserInstanceStatus.class), anyBoolean()))
 				.thenReturn(Collections.emptyList());
 		schedulerJobService.executeStartResourceJob(true);
-		verify(schedulerJobDAO).getSchedulerJobsToAchieveStatus(refEq(RUNNING), eq(true));
+		verify(schedulerJobDAO).getSchedulerJobsToAchieveStatus(refEq(UserInstanceStatus.RUNNING), eq(true));
 		verify(systemUserService, never()).create(any());
 		verify(computationalService, never()).startSparkCluster(any(), any(), any());
 		verifyNoMoreInteractions(schedulerJobDAO);
@@ -563,8 +563,7 @@ public class SchedulerJobServiceImplTest {
 
 		schedulerJobService.executeStopResourceJob(false);
 
-		verify(schedulerJobDAO, times(2)).getSchedulerJobsToAchieveStatus(
-				refEq(STOPPED), eq(false));
+		verify(schedulerJobDAO).getSchedulerJobsToAchieveStatus(refEq(UserInstanceStatus.STOPPED), eq(false));
 		verify(systemUserService).create(USER);
 		verify(exploratoryService).stop(userInfo, EXPLORATORY_NAME);
 		verifyNoMoreInteractions(schedulerJobDAO, systemUserService, exploratoryService);
@@ -577,8 +576,7 @@ public class SchedulerJobServiceImplTest {
 				.thenReturn(Collections.emptyList());
 		schedulerJobService.executeStopResourceJob(false);
 
-		verify(schedulerJobDAO, times(2)).getSchedulerJobsToAchieveStatus(
-				refEq(STOPPED), eq(false));
+		verify(schedulerJobDAO).getSchedulerJobsToAchieveStatus(refEq(UserInstanceStatus.STOPPED), eq(false));
 		verify(systemUserService, never()).create(USER);
 		verify(exploratoryService, never()).stop(any(), any());
 		verifyNoMoreInteractions(schedulerJobDAO);
@@ -596,8 +594,7 @@ public class SchedulerJobServiceImplTest {
 
 		schedulerJobService.executeStopResourceJob(true);
 
-		verify(schedulerJobDAO, times(2)).getSchedulerJobsToAchieveStatus(
-				refEq(STOPPED), eq(true));
+		verify(schedulerJobDAO).getSchedulerJobsToAchieveStatus(refEq(UserInstanceStatus.STOPPED), eq(true));
 		verify(systemUserService).create(USER);
 		verify(computationalService).stopSparkCluster(userInfo, EXPLORATORY_NAME, COMPUTATIONAL_NAME);
 		verifyNoMoreInteractions(schedulerJobDAO, systemUserService, computationalService);
@@ -610,8 +607,7 @@ public class SchedulerJobServiceImplTest {
 				.thenReturn(Collections.emptyList());
 		schedulerJobService.executeStopResourceJob(true);
 
-		verify(schedulerJobDAO, times(2)).getSchedulerJobsToAchieveStatus(
-				refEq(STOPPED), eq(true));
+		verify(schedulerJobDAO).getSchedulerJobsToAchieveStatus(refEq(UserInstanceStatus.STOPPED), eq(true));
 		verify(systemUserService, never()).create(USER);
 		verify(computationalService, never()).stopSparkCluster(any(), any(), any());
 		verifyNoMoreInteractions(schedulerJobDAO);
